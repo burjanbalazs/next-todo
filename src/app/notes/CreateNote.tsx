@@ -9,7 +9,7 @@ export default function CreateNote() {
     const [content, setContent] = useState('');
     const router = useRouter();
     const create = async () =>{
-        const res = await createNote(title, content);
+        await createNote(title, content);
         setTitle('');
         setContent('');
         router.push('/');
