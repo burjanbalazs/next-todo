@@ -2,27 +2,20 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import {createNote} from '../actions/create'
 
 export default function CreateNote() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const router = useRouter();
-    const create = async() => {
-        await fetch('http://127.0.0.1:8090/api/collections/Notes/records', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "Title": title,
-            "Content": content,
-        })
-    });
-    setContent('');
-    setTitle('');
-
-    router.refresh();
+    const create = async () =>{
+        const res = await createNote(title, content);
+        setTitle('');
+        setContent('');
+        router.push('/');
+        router.refresh();
     }
+    
     return (
         <form onSubmit={create}>
             <h1>Create a note</h1>

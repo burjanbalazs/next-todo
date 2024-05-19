@@ -1,15 +1,17 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-export default function DeleteNote({note}: any) {
+import { deleteNote } from "../../actions/delete";
+import { revalidatePath } from "next/cache";
+export default function DeleteNote({ note }: any) {
+    const noteId = note.id;
     const router = useRouter();
-    const deleteNote = async () => {
-        const res = await fetch(`http://127.0.0.1:8090/api/collections/Notes/records/${note.id}`, {
-        method: 'DELETE'
-    });
-    router.push('/notes');
+    const del = async () => {
+        await deleteNote(noteId);
+        router.push('/notes');
+        router.refresh();
     }
-    return(
-        <button onClick={deleteNote}>Delete this</button>
+    return (
+            <button onClick={del}>Delete this</button>
     );
 }
