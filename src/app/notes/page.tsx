@@ -7,11 +7,11 @@ import { notes } from "../..//db/schema";
 import { revalidatePath } from "next/cache";
 
 async function getNotes() {
+  revalidatePath("/notes", "page");
   const dbUrl = process.env.DB_URL as string;
   const sql = neon(dbUrl);
   const db = drizzle(sql);
   const result = await db.select().from(notes);
-  revalidatePath("/notes", "page");
   return result;
 }
 export default async function NotesPage() {

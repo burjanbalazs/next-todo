@@ -1,11 +1,13 @@
-import Note from "../NoteComponent";
 import DeleteNote from "./DeleteNote";
+import ConditionalNote from "./ConditionalNote";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { notes } from "../../..//db/schema";
+import { notes } from "../../../db/schema";
 import { eq } from "drizzle-orm";
+import { revalidatePath } from "next/cache";
 
 async function getNote(noteId: number) {
+  revalidatePath(`/notes/${noteId}`, "page");
   const dbUrl = process.env.DB_URL as string;
   const sql = neon(dbUrl);
   const db = drizzle(sql);
@@ -15,10 +17,15 @@ async function getNote(noteId: number) {
 
 export default async function NotePage({ params }: any) {
   const note = await getNote(params.id);
+  console.log('NotePage Fetched Note:', note);
+
+
   return (
     <div>
-      <Note note={note}></Note>
-      <DeleteNote note={note}></DeleteNote>
+      <div>
+        <ConditionalNote note={note} />
+      </div>
+      <DeleteNote note={note} />
     </div>
   );
 }
