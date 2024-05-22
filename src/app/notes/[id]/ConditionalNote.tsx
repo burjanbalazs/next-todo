@@ -5,7 +5,6 @@ import EditNote from "./EditableNote";
 import Note from "../NoteComponent";
 export default function ConditionalNote(note: any) {
   const [isClicked, setIsClicked] = useState(false);
-  console.log('ConditionalNote Props:', note);
   const handleClick = async () => {
     setIsClicked(true);
   };

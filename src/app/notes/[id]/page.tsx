@@ -17,7 +17,6 @@ async function getNote(noteId: number) {
 
 export default async function NotePage({ params }: any) {
   const note = await getNote(params.id);
-  console.log('NotePage Fetched Note:', note);
 
 
   return (

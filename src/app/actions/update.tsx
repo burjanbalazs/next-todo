@@ -5,7 +5,6 @@ import { notes } from "../../db/schema";
 import { eq } from "drizzle-orm";
 
 export async function updateNote(noteId: any, title: any, content: any) {
-  console.log("hi from updatenote");
   const dbUrl = process.env.DB_URL as string;
   const sql = neon(dbUrl);
   const db = drizzle(sql);

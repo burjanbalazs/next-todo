@@ -3,16 +3,15 @@ import styles from "./Notes.module.css";
 
 export default function Note({ note }: any) {
 
-  console.log('Note Component Received Note:', note);
   let id, title, content, createdAt, updatedAt;
 
-  if(note.id !== undefined) {
-     ({ id, title, content, createdAt, updatedAt } = note);
+  if (note.id !== undefined) {
+    ({ id, title, content, createdAt, updatedAt } = note);
   }
   else {
-  ({ note: { id, title, content, createdAt, updatedAt }} = note);
+    ({ note: { id, title, content, createdAt, updatedAt } } = note);
   }
-  
+
 
   return (
     <Link href={`/notes/${id}`}>
