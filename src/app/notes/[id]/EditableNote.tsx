@@ -10,7 +10,7 @@ export default function EditNote({ note }: any) {
   const [Title, setTitle] = useState(title);
   const [Content, setContent] = useState(content);
   const update = async () => {
-    await updateNote(id, title, content);
+    await updateNote(id, Title, Content);
     router.push("/notes");
     router.refresh();
   };
