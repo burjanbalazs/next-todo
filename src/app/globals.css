@@ -8,7 +8,6 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  padding: 0 2rem;
 }
 
 a {
@@ -34,19 +33,11 @@ textarea {
   margin: 0.5rem 0;
 }
 
-button {
-  background-color: #000000;
-  border: none;
-  color: white;
-  padding: 0.5rem 2rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-}
-
 nav a {
   font-weight: bold;
   margin: 0 0.5rem;
   text-decoration: underline;
+}
+nav {
+  padding: 0 2rem;
 }
