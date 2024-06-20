@@ -24,7 +24,7 @@ export default function Note({ note }: any) {
 
   return (
     <div className={styles.note}>
-      <button className={styles.hoverButton} onClick={sendData}>D</button>
+      <button className={styles.hoverButton} onClick={sendData}>X</button>
       <Link href={`/notes/${id}`}>
         <h2 className={styles.title}>Title: {title}</h2>
         <h5 className={styles.content}>{content}</h5>
